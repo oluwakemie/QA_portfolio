@@ -30,5 +30,5 @@ Full QA Documentation Set
 
 📬 Contact: 2348079534994
 
-LinkedIn: linkedin.com/in/oluwakemiesther
+LinkedIn: https://www.linkedin.com/in/oluwakemiesther/
 Email: Oluwakemi.dada37@gmail.com
