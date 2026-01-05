@@ -6,6 +6,7 @@ This folder contains manual functional and regression test cases for a logistics
 - User registration and login
 - Payment initiation and verification
 - Failed and successful transactions
+- Failed and successful shipment
 - Input validation and error handling
 
 ### Artifacts
