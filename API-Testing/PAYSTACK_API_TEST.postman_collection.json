@@ -1,0 +1,1315 @@
+{
+	"info": {
+		"_postman_id": "e8448838-329d-4a24-9c4c-850884377fd9",
+		"name": "PAYSTACK_API_TEST",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "27725939"
+	},
+	"item": [
+		{
+			"name": "Initialize Transaction",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": [
+				{
+					"name": "Successful",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{BaseURL}}/transaction/totals",
+							"host": [
+								"{{BaseURL}}"
+							],
+							"path": [
+								"transaction",
+								"totals"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": null,
+					"header": [
+						{
+							"key": "Date",
+							"value": "Sun, 11 Jan 2026 22:45:10 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Content-Encoding",
+							"value": "gzip"
+						},
+						{
+							"key": "CF-Ray",
+							"value": "9bc7f162d95a200c-IAD"
+						},
+						{
+							"key": "CF-Cache-Status",
+							"value": "DYNAMIC"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"f0-hu8aUmOgoWBbQhDfl/mDlw\""
+						},
+						{
+							"key": "Set-Cookie",
+							"value": "sails.sid=s%3AvmFeaFmgL3jiHuaTMq0Bq4Y6yz1-B1Ma.6a1VyA2tfwE55VCgtNzGNkjNnec4u5YKLUsDHbgvCA0; Path=/; HttpOnly; Secure; SameSite=Lax"
+						},
+						{
+							"key": "Strict-Transport-Security",
+							"value": "max-age=15552000; includeSubDomains; preload"
+						},
+						{
+							"key": "Vary",
+							"value": "Accept-Encoding"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "x-amz-apigw-id",
+							"value": "XCsujFRujoEEBvA="
+						},
+						{
+							"key": "x-amzn-remapped-connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "x-amzn-remapped-content-length",
+							"value": "240"
+						},
+						{
+							"key": "x-amzn-remapped-date",
+							"value": "Sun, 11 Jan 2026 22:45:10 GMT"
+						},
+						{
+							"key": "x-amzn-remapped-server",
+							"value": "nginx"
+						},
+						{
+							"key": "x-amzn-requestid",
+							"value": "91a38082-8ea5-4d2c-915a-25261925997c"
+						},
+						{
+							"key": "Server",
+							"value": "cloudflare"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"status\": true,\n    \"message\": \"Transaction totals\",\n    \"data\": {\n        \"total_transactions\": 0,\n        \"total_volume\": 0,\n        \"total_volume_by_currency\": [\n            {\n                \"currency\": \"NGN\",\n                \"amount\": 0\n            }\n        ],\n        \"pending_transfers\": 0,\n        \"pending_transfers_by_currency\": [\n            {\n                \"currency\": \"NGN\",\n                \"amount\": 0\n            }\n        ]\n    }\n}"
+				}
+			]
+		},
+		{
+			"name": "Verify Transaction",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Transaction initialized successfully\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"const response = pm.response.json();",
+							"",
+							"// Save reference",
+							"pm.environment.set(\"reference\", response.data.reference);",
+							"",
+							"// Save authorization URL",
+							"pm.environment.set(\"authorization_url\", response.data.authorization_url);",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {},
+						"requests": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{BaseURL}}/transaction/verify/{{reference}}",
+					"host": [
+						"{{BaseURL}}"
+					],
+					"path": [
+						"transaction",
+						"verify",
+						"{{reference}}"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Verify Transaction Succesful",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{BaseURL}}/transaction/verify/p5d1iopxvy",
+							"host": [
+								"{{BaseURL}}"
+							],
+							"path": [
+								"transaction",
+								"verify",
+								"p5d1iopxvy"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": null,
+					"header": [
+						{
+							"key": "Date",
+							"value": "Sun, 11 Jan 2026 23:20:27 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Content-Encoding",
+							"value": "gzip"
+						},
+						{
+							"key": "CF-Ray",
+							"value": "9bc82512eb29126a-IAD"
+						},
+						{
+							"key": "CF-Cache-Status",
+							"value": "DYNAMIC"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"3cb-Zf5pCsrLqtIxiE3xTHW3qg\""
+						},
+						{
+							"key": "Set-Cookie",
+							"value": "sails.sid=s%3AYZNTSYt84WkOXxRAcPZeMurJ1020Hcid.X95fEsjm2NqtO8s0FFFLp77gT4VzhO%2FQXWsB3byXVOs; Path=/; HttpOnly; Secure; SameSite=Lax"
+						},
+						{
+							"key": "Strict-Transport-Security",
+							"value": "max-age=15552000; includeSubDomains; preload"
+						},
+						{
+							"key": "Vary",
+							"value": "Accept-Encoding"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "x-amz-apigw-id",
+							"value": "XCx5WFoaDoEEo7g="
+						},
+						{
+							"key": "x-amzn-remapped-connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "x-amzn-remapped-content-length",
+							"value": "971"
+						},
+						{
+							"key": "x-amzn-remapped-date",
+							"value": "Sun, 11 Jan 2026 23:20:27 GMT"
+						},
+						{
+							"key": "x-amzn-remapped-server",
+							"value": "nginx"
+						},
+						{
+							"key": "x-amzn-requestid",
+							"value": "7aaac95c-fec3-42a1-a7fd-93c3c0fe5dd3"
+						},
+						{
+							"key": "x-ratelimit-limit",
+							"value": "120"
+						},
+						{
+							"key": "x-ratelimit-remaining",
+							"value": "117"
+						},
+						{
+							"key": "Server",
+							"value": "cloudflare"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"status\": true,\n    \"message\": \"Verification successful\",\n    \"data\": {\n        \"id\": 5726556126,\n        \"domain\": \"test\",\n        \"status\": \"abandoned\",\n        \"reference\": \"p5d1iopxvy\",\n        \"receipt_number\": null,\n        \"amount\": 20000,\n        \"message\": null,\n        \"gateway_response\": \"The transaction was not completed\",\n        \"paid_at\": null,\n        \"created_at\": \"2026-01-11T22:43:16.000Z\",\n        \"channel\": \"card\",\n        \"currency\": \"NGN\",\n        \"ip_address\": \"102.89.46.168,54.86.50.139, 172.71.222.40, 172.31.62.52\",\n        \"metadata\": \"\",\n        \"log\": null,\n        \"fees\": null,\n        \"fees_split\": null,\n        \"authorization\": {},\n        \"customer\": {\n            \"id\": 331645861,\n            \"first_name\": null,\n            \"last_name\": null,\n            \"email\": \"customer@email.com\",\n            \"customer_code\": \"CUS_a327f3zljjh5qcj\",\n            \"phone\": null,\n            \"metadata\": null,\n            \"risk_action\": \"default\",\n            \"international_format_phone\": null\n        },\n        \"plan\": null,\n        \"split\": {},\n        \"order_id\": null,\n        \"paidAt\": null,\n        \"createdAt\": \"2026-01-11T22:43:16.000Z\",\n        \"requested_amount\": 20000,\n        \"pos_transaction_data\": null,\n        \"source\": null,\n        \"fees_breakdown\": null,\n        \"connect\": null,\n        \"transaction_date\": \"2026-01-11T22:43:16.000Z\",\n        \"plan_object\": {},\n        \"subaccount\": {}\n    }\n}"
+				}
+			]
+		},
+		{
+			"name": "Initialize Transaction",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Transaction initialized successfully\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"const response = pm.response.json();",
+							"",
+							"// Save reference",
+							"pm.environment.set(\"reference\", response.data.reference);",
+							"",
+							"// Save authorization URL",
+							"pm.environment.set(\"authorization_url\", response.data.authorization_url);",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {},
+						"requests": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{ \n  \"email\": \"customer@email.com\", \n  \"amount\": \"20000\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{BaseURL}}/transaction/initialize",
+					"host": [
+						"{{BaseURL}}"
+					],
+					"path": [
+						"transaction",
+						"initialize"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Successful",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{ \n  \"email\": \"customer@email.com\", \n  \"amount\": \"20000\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BaseURL}}/transaction/initialize",
+							"host": [
+								"{{BaseURL}}"
+							],
+							"path": [
+								"transaction",
+								"initialize"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": null,
+					"header": [
+						{
+							"key": "Date",
+							"value": "Sun, 11 Jan 2026 22:43:16 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Content-Encoding",
+							"value": "gzip"
+						},
+						{
+							"key": "CF-Ray",
+							"value": "9bc7ee972c7e1ffa-IAD"
+						},
+						{
+							"key": "CF-Cache-Status",
+							"value": "DYNAMIC"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"bb-sprH+O0QPKVdM93oAsrBGg\""
+						},
+						{
+							"key": "Set-Cookie",
+							"value": "sails.sid=s%3AxiT9LuicMNVkKi0riD7RJlB0TrA9_lCc.FQ4YbvpIXFKiR1WUUT4FqUBZ9yv%2FD6pOyLgFLKRIGms; Path=/; HttpOnly; Secure; SameSite=Lax"
+						},
+						{
+							"key": "Strict-Transport-Security",
+							"value": "max-age=15552000; includeSubDomains; preload"
+						},
+						{
+							"key": "Vary",
+							"value": "X-HTTP-Method-Override, Accept-Encoding"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "x-amz-apigw-id",
+							"value": "XCscpGLjDoEErXw="
+						},
+						{
+							"key": "x-amzn-remapped-connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "x-amzn-remapped-content-length",
+							"value": "187"
+						},
+						{
+							"key": "x-amzn-remapped-date",
+							"value": "Sun, 11 Jan 2026 22:43:16 GMT"
+						},
+						{
+							"key": "x-amzn-remapped-server",
+							"value": "nginx"
+						},
+						{
+							"key": "x-amzn-requestid",
+							"value": "127dfce4-212d-4b6c-950c-3d12e7a3e6ce"
+						},
+						{
+							"key": "Server",
+							"value": "cloudflare"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"status\": true,\n    \"message\": \"Authorization URL created\",\n    \"data\": {\n        \"authorization_url\": \"https://checkout.paystack.com/ikkfckvaocaiu5g\",\n        \"access_code\": \"ikkfckvaocaiu5g\",\n        \"reference\": \"p5d1iopxvy\"\n    }\n}"
+				},
+				{
+					"name": "Invalid Input",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{ \n  \"email\": \"customer@email.com\", \n  \"amount\": \"20000c\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BaseURL}}/transaction/initialize",
+							"host": [
+								"{{BaseURL}}"
+							],
+							"path": [
+								"transaction",
+								"initialize"
+							]
+						}
+					},
+					"status": "Bad Request",
+					"code": 400,
+					"_postman_previewlanguage": null,
+					"header": [
+						{
+							"key": "Date",
+							"value": "Sun, 11 Jan 2026 22:44:04 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "234"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Server",
+							"value": "cloudflare"
+						},
+						{
+							"key": "CF-Ray",
+							"value": "9bc7efc5eeac062e-IAD"
+						},
+						{
+							"key": "CF-Cache-Status",
+							"value": "DYNAMIC"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"ea-FueWYGoLZhBS9B/qpSDMyQ\""
+						},
+						{
+							"key": "Set-Cookie",
+							"value": "sails.sid=s%3A5rhAO8u3iGHw3zwzXKg4_8khkRSsIFJo.fBGU9taXbMX7tkuE8X%2FkQYi41Nm1ON24idDeUj80GCM; Path=/; HttpOnly; Secure; SameSite=Lax"
+						},
+						{
+							"key": "Strict-Transport-Security",
+							"value": "max-age=15552000; includeSubDomains; preload"
+						},
+						{
+							"key": "Vary",
+							"value": "X-HTTP-Method-Override, Accept-Encoding"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "x-amz-apigw-id",
+							"value": "XCskOEwRjoEEHYg="
+						},
+						{
+							"key": "x-amzn-remapped-connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "x-amzn-remapped-content-length",
+							"value": "234"
+						},
+						{
+							"key": "x-amzn-remapped-date",
+							"value": "Sun, 11 Jan 2026 22:44:04 GMT"
+						},
+						{
+							"key": "x-amzn-remapped-server",
+							"value": "nginx"
+						},
+						{
+							"key": "x-amzn-requestid",
+							"value": "bcff4e07-4bc7-4deb-91ca-af1586ddf8dd"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"status\": false,\n    \"message\": \"Invalid Amount Sent\",\n    \"meta\": {\n        \"nextStep\": \"Ensure that you're passing your amount correctly. It should be a number greater than zero, with no decimal places\"\n    },\n    \"type\": \"validation_error\",\n    \"code\": \"invalid_amount\"\n}"
+				},
+				{
+					"name": "Initialize Transaction",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{ \n  \"email\": \"customer@email.com\", \n  \"amount\": \"20000\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BaseURL}}/transaction/initialize",
+							"host": [
+								"{{BaseURL}}"
+							],
+							"path": [
+								"transaction",
+								"initialize"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "",
+					"header": [
+						{
+							"key": "Date",
+							"value": "Sun, 11 Jan 2026 23:24:42 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Content-Encoding",
+							"value": "gzip"
+						},
+						{
+							"key": "CF-Ray",
+							"value": "9bc82b495e2c1770-IAD"
+						},
+						{
+							"key": "CF-Cache-Status",
+							"value": "DYNAMIC"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"bb-DYHGWJooSNdacJKdSHFxEg\""
+						},
+						{
+							"key": "Set-Cookie",
+							"value": "sails.sid=s%3AaL0ZlGRk_ihfZIMfTUSrnRNyCmIxAluu.djpfepix8cOY0%2FUf2BKhibs55J2bGe%2FiLVN9A%2F9K2%2Bc; Path=/; HttpOnly; Secure; SameSite=Lax"
+						},
+						{
+							"key": "Strict-Transport-Security",
+							"value": "max-age=15552000; includeSubDomains; preload"
+						},
+						{
+							"key": "Vary",
+							"value": "X-HTTP-Method-Override, Accept-Encoding"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "x-amz-apigw-id",
+							"value": "XCyhGE-1joEEcCA="
+						},
+						{
+							"key": "x-amzn-remapped-connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "x-amzn-remapped-content-length",
+							"value": "187"
+						},
+						{
+							"key": "x-amzn-remapped-date",
+							"value": "Sun, 11 Jan 2026 23:24:42 GMT"
+						},
+						{
+							"key": "x-amzn-remapped-server",
+							"value": "nginx"
+						},
+						{
+							"key": "x-amzn-requestid",
+							"value": "16465960-07d0-49e0-96b8-ad8a16ff36f4"
+						},
+						{
+							"key": "Server",
+							"value": "cloudflare"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"status\": true,\n    \"message\": \"Authorization URL created\",\n    \"data\": {\n        \"authorization_url\": \"https://checkout.paystack.com/ijk5gewvkr4s7j3\",\n        \"access_code\": \"ijk5gewvkr4s7j3\",\n        \"reference\": \"s7gmfu12ds\"\n    }\n}"
+				}
+			]
+		},
+		{
+			"name": "List Transactions",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Transaction initialized successfully\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"const response = pm.response.json();",
+							"",
+							"// Save reference",
+							"pm.environment.set(\"reference\", response.data.reference);",
+							"",
+							"// Save authorization URL",
+							"pm.environment.set(\"authorization_url\", response.data.authorization_url);",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {},
+						"requests": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{BaseURL}}/transaction",
+					"host": [
+						"{{BaseURL}}"
+					],
+					"path": [
+						"transaction"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Successful",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{BaseURL}}/transaction",
+							"host": [
+								"{{BaseURL}}"
+							],
+							"path": [
+								"transaction"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": null,
+					"header": [
+						{
+							"key": "Date",
+							"value": "Sun, 11 Jan 2026 22:47:06 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "628"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Server",
+							"value": "cloudflare"
+						},
+						{
+							"key": "CF-Ray",
+							"value": "9bc7f4365a821734-IAD"
+						},
+						{
+							"key": "CF-Cache-Status",
+							"value": "DYNAMIC"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Content-Encoding",
+							"value": "gzip"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"4c7-cC67FwwM1iNIOsqTYKAvXg\""
+						},
+						{
+							"key": "Set-Cookie",
+							"value": "sails.sid=s%3Ajta0RIBkbGi1Z_px7Qso5JQozfk_qynS.ZzYXRbc4G6sbHXn9IVd4lIkPRkafWH8eEXwkMZgMlN0; Path=/; HttpOnly; Secure; SameSite=Lax"
+						},
+						{
+							"key": "Strict-Transport-Security",
+							"value": "max-age=15552000; includeSubDomains; preload"
+						},
+						{
+							"key": "Vary",
+							"value": "Accept-Encoding"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "x-amz-apigw-id",
+							"value": "XCtAoEmgDoEEujQ="
+						},
+						{
+							"key": "x-amzn-remapped-connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "x-amzn-remapped-date",
+							"value": "Sun, 11 Jan 2026 22:47:06 GMT"
+						},
+						{
+							"key": "x-amzn-remapped-server",
+							"value": "nginx"
+						},
+						{
+							"key": "x-amzn-requestid",
+							"value": "b718b00c-82b6-4456-bab0-11b229236890"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"status\": true,\n    \"message\": \"Transactions retrieved\",\n    \"data\": [\n        {\n            \"id\": 5726556126,\n            \"domain\": \"test\",\n            \"status\": \"abandoned\",\n            \"reference\": \"p5d1iopxvy\",\n            \"amount\": 20000,\n            \"message\": null,\n            \"gateway_response\": \"The transaction was not completed\",\n            \"paid_at\": null,\n            \"created_at\": \"2026-01-11T22:43:16.000Z\",\n            \"channel\": \"card\",\n            \"currency\": \"NGN\",\n            \"ip_address\": \"102.89.46.168,54.86.50.139, 172.71.222.40, 172.31.62.52\",\n            \"metadata\": null,\n            \"log\": null,\n            \"fees\": null,\n            \"fees_split\": null,\n            \"customer\": {\n                \"id\": 331645861,\n                \"first_name\": null,\n                \"last_name\": null,\n                \"email\": \"customer@email.com\",\n                \"phone\": null,\n                \"metadata\": null,\n                \"customer_code\": \"CUS_a327f3zljjh5qcj\",\n                \"risk_action\": \"default\"\n            },\n            \"authorization\": {\n                \"authorization_code\": null,\n                \"bin\": null,\n                \"last4\": null,\n                \"exp_month\": null,\n                \"exp_year\": null,\n                \"channel\": null,\n                \"card_type\": null,\n                \"bank\": null,\n                \"country_code\": null,\n                \"brand\": null,\n                \"reusable\": false,\n                \"signature\": null,\n                \"account_name\": null\n            },\n            \"plan\": {},\n            \"split\": {},\n            \"subaccount\": {},\n            \"order_id\": null,\n            \"paidAt\": null,\n            \"createdAt\": \"2026-01-11T22:43:16.000Z\",\n            \"requested_amount\": 20000,\n            \"source\": {\n                \"source\": \"merchant_api\",\n                \"type\": \"api\",\n                \"identifier\": null,\n                \"entry_point\": \"transaction_initialize\"\n            },\n            \"connect\": null,\n            \"pos_transaction_data\": null\n        }\n    ],\n    \"meta\": {\n        \"total\": 1,\n        \"total_volume\": 20000,\n        \"skipped\": 0,\n        \"perPage\": 50,\n        \"page\": 1,\n        \"pageCount\": 1\n    }\n}"
+				}
+			]
+		},
+		{
+			"name": "Fetch Transaction",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Transaction initialized successfully\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"const response = pm.response.json();",
+							"",
+							"// Save reference",
+							"pm.environment.set(\"reference\", response.data.reference);",
+							"",
+							"// Save authorization URL",
+							"pm.environment.set(\"authorization_url\", response.data.authorization_url);",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {},
+						"requests": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{BaseURL}}/transaction/5726556126",
+					"host": [
+						"{{BaseURL}}"
+					],
+					"path": [
+						"transaction",
+						"5726556126"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Fetch Transaction",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{BaseURL}}/transaction/5726556126",
+							"host": [
+								"{{BaseURL}}"
+							],
+							"path": [
+								"transaction",
+								"5726556126"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "",
+					"header": [
+						{
+							"key": "Date",
+							"value": "Sun, 11 Jan 2026 22:49:28 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Content-Encoding",
+							"value": "gzip"
+						},
+						{
+							"key": "CF-Ray",
+							"value": "9bc7f7ac8cbb0805-IAD"
+						},
+						{
+							"key": "CF-Cache-Status",
+							"value": "DYNAMIC"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"3d1-2Pd219DHK93k/jJwrJVIWQ\""
+						},
+						{
+							"key": "Set-Cookie",
+							"value": "sails.sid=s%3A_XX1eHWDw5HBCK8IwVwcn7d1M5Up7nME.FWg%2FpEyKKxRLXyQ0GXgI6NWJkSfMjcW1E0g3rQyfe%2F4; Path=/; HttpOnly; Secure; SameSite=Lax"
+						},
+						{
+							"key": "Strict-Transport-Security",
+							"value": "max-age=15552000; includeSubDomains; preload"
+						},
+						{
+							"key": "Vary",
+							"value": "Accept-Encoding"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "x-amz-apigw-id",
+							"value": "XCtWyHqbjoEETPA="
+						},
+						{
+							"key": "x-amzn-remapped-connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "x-amzn-remapped-content-length",
+							"value": "977"
+						},
+						{
+							"key": "x-amzn-remapped-date",
+							"value": "Sun, 11 Jan 2026 22:49:27 GMT"
+						},
+						{
+							"key": "x-amzn-remapped-server",
+							"value": "nginx"
+						},
+						{
+							"key": "x-amzn-requestid",
+							"value": "677952a2-f5be-4aa1-8d4e-b48dfad4d52c"
+						},
+						{
+							"key": "Server",
+							"value": "cloudflare"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"status\": true,\n    \"message\": \"Transaction retrieved\",\n    \"data\": {\n        \"id\": 5726556126,\n        \"domain\": \"test\",\n        \"status\": \"abandoned\",\n        \"reference\": \"p5d1iopxvy\",\n        \"receipt_number\": null,\n        \"amount\": 20000,\n        \"message\": null,\n        \"gateway_response\": \"The transaction was not completed\",\n        \"helpdesk_link\": null,\n        \"paid_at\": null,\n        \"created_at\": \"2026-01-11T22:43:16.000Z\",\n        \"channel\": \"card\",\n        \"currency\": \"NGN\",\n        \"ip_address\": \"102.89.46.168,54.86.50.139, 172.71.222.40, 172.31.62.52\",\n        \"metadata\": \"\",\n        \"log\": null,\n        \"fees\": null,\n        \"fees_split\": null,\n        \"authorization\": {},\n        \"customer\": {\n            \"id\": 331645861,\n            \"first_name\": null,\n            \"last_name\": null,\n            \"email\": \"customer@email.com\",\n            \"customer_code\": \"CUS_a327f3zljjh5qcj\",\n            \"phone\": null,\n            \"metadata\": null,\n            \"risk_action\": \"default\",\n            \"international_format_phone\": null\n        },\n        \"plan\": {},\n        \"subaccount\": {},\n        \"split\": {},\n        \"order_id\": null,\n        \"paidAt\": null,\n        \"createdAt\": \"2026-01-11T22:43:16.000Z\",\n        \"requested_amount\": 20000,\n        \"pos_transaction_data\": null,\n        \"source\": {\n            \"type\": \"api\",\n            \"source\": \"merchant_api\",\n            \"identifier\": null\n        },\n        \"fees_breakdown\": null,\n        \"connect\": null\n    }\n}"
+				}
+			]
+		},
+		{
+			"name": "Charge Authorization",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{ \n  \"email\": \"customer@email.com\", \n  \"amount\": \"20000\", \n  \"authorization_code\": \"AUTH_72btv547\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{BaseURL}}/transaction/charge_authorization",
+					"host": [
+						"{{BaseURL}}"
+					],
+					"path": [
+						"transaction",
+						"charge_authorization"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "View Transaction Timeline",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{BaseURL}}/transaction/timeline/5726556126",
+					"host": [
+						"{{BaseURL}}"
+					],
+					"path": [
+						"transaction",
+						"timeline",
+						"5726556126"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Successfully",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{BaseURL}}/transaction/timeline/5726556126",
+							"host": [
+								"{{BaseURL}}"
+							],
+							"path": [
+								"transaction",
+								"timeline",
+								"5726556126"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": null,
+					"header": [
+						{
+							"key": "Date",
+							"value": "Sun, 11 Jan 2026 23:08:43 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Content-Encoding",
+							"value": "gzip"
+						},
+						{
+							"key": "CF-Ray",
+							"value": "9bc813e45aee81af-IAD"
+						},
+						{
+							"key": "CF-Cache-Status",
+							"value": "DYNAMIC"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"38-jUDC8MoV67Z3c3+K6yxvLA\""
+						},
+						{
+							"key": "Set-Cookie",
+							"value": "sails.sid=s%3Au08bi75v9TJEsEcu-NriXP2QTCvKlYNU.jdgLbHl0MoI5qiy3pS7i5IH3oZpzPTpzek0Mnx8%2ByWU; Path=/; HttpOnly; Secure; SameSite=Lax"
+						},
+						{
+							"key": "Strict-Transport-Security",
+							"value": "max-age=15552000; includeSubDomains; preload"
+						},
+						{
+							"key": "Vary",
+							"value": "Accept-Encoding"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "x-amz-apigw-id",
+							"value": "XCwLYEn3joEEPNg="
+						},
+						{
+							"key": "x-amzn-remapped-connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "x-amzn-remapped-content-length",
+							"value": "56"
+						},
+						{
+							"key": "x-amzn-remapped-date",
+							"value": "Sun, 11 Jan 2026 23:08:43 GMT"
+						},
+						{
+							"key": "x-amzn-remapped-server",
+							"value": "nginx"
+						},
+						{
+							"key": "x-amzn-requestid",
+							"value": "256e1897-2fe3-4147-a7d0-953642635a18"
+						},
+						{
+							"key": "Server",
+							"value": "cloudflare"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"status\": true,\n    \"message\": \"Timeline retrieved\",\n    \"data\": {}\n}"
+				}
+			]
+		},
+		{
+			"name": "Transaction Totals",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Transaction initialized successfully\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"const response = pm.response.json();",
+							"",
+							"// Save reference",
+							"pm.environment.set(\"reference\", response.data.reference);",
+							"",
+							"// Save authorization URL",
+							"pm.environment.set(\"authorization_url\", response.data.authorization_url);",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {},
+						"requests": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{BaseURL}}/transaction/export",
+					"host": [
+						"{{BaseURL}}"
+					],
+					"path": [
+						"transaction",
+						"export"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Successfully Exported Total",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{BaseURL}}/transaction/export",
+							"host": [
+								"{{BaseURL}}"
+							],
+							"path": [
+								"transaction",
+								"export"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": null,
+					"header": [
+						{
+							"key": "Date",
+							"value": "Sun, 11 Jan 2026 23:09:50 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Content-Encoding",
+							"value": "gzip"
+						},
+						{
+							"key": "CF-Ray",
+							"value": "9bc81587288282aa-IAD"
+						},
+						{
+							"key": "CF-Cache-Status",
+							"value": "DYNAMIC"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"1e3-KHkbAbYwJcIs1OT1j7yLPg\""
+						},
+						{
+							"key": "Set-Cookie",
+							"value": "sails.sid=s%3Ax2CYCbCSKLLTcA2X8zpF0-s0OjCheqM8.XHf5MRua2dry5GCBZ7Hb73G67DPjoeDFpGxiClLwP34; Path=/; HttpOnly; Secure; SameSite=Lax"
+						},
+						{
+							"key": "Strict-Transport-Security",
+							"value": "max-age=15552000; includeSubDomains; preload"
+						},
+						{
+							"key": "Vary",
+							"value": "Accept-Encoding"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "x-amz-apigw-id",
+							"value": "XCwV2H5KjoEErKA="
+						},
+						{
+							"key": "x-amzn-remapped-connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "x-amzn-remapped-content-length",
+							"value": "483"
+						},
+						{
+							"key": "x-amzn-remapped-date",
+							"value": "Sun, 11 Jan 2026 23:09:50 GMT"
+						},
+						{
+							"key": "x-amzn-remapped-server",
+							"value": "nginx"
+						},
+						{
+							"key": "x-amzn-requestid",
+							"value": "5739b148-8f08-4a22-aeb8-21ab15defa08"
+						},
+						{
+							"key": "Server",
+							"value": "cloudflare"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"status\": true,\n    \"message\": \"Export successful\",\n    \"data\": {\n        \"path\": \"https://s3.eu-west-1.amazonaws.com/files.paystack.co/exports/1689932/transactions/LADYBUG_transactions_1768172990774.csv?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAXAYWUXO2QE7FHZLX%2F20260111%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260111T230950Z&X-Amz-Expires=60&X-Amz-Signature=3809968bb1debda3dc723a2e671593ac5dadc866a11e9eaedb8c1cbda45c0c51&X-Amz-SignedHeaders=host\",\n        \"expiresAt\": \"2026-01-11 23:10:50\"\n    }\n}"
+				}
+			]
+		},
+		{
+			"name": "Partial Debit",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{ \n  \"authorization_code\": \"AUTH_72btv547\", \n  \"currency\": \"NGN\", \n  \"amount\": \"20000\",\n  \"email\": \"customer@email.com\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{BaseURL}}/transaction/partial_debit",
+					"host": [
+						"{{BaseURL}}"
+					],
+					"path": [
+						"transaction",
+						"partial_debit"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "{{accessToken}}",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"requests": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"requests": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}
