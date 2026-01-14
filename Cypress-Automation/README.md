@@ -18,3 +18,5 @@ This project contains automated end-to-end tests written using Cypress.
 npm install
 npx cypress open
 
+Or headless:
+npx cypress run
