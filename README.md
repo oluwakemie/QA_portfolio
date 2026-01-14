@@ -1,34 +1,35 @@
-👋 Hi, I'm Kemi — QA Engineer
+# Performance Testing – QA Portfolio
 
-I’m a detail-oriented QA Engineer with hands-on experience in functional testing, API validation, test automation using Cypress, and performance testing with JMeter. I focus on delivering high-quality software through structured testing, clear documentation, and efficient problem-solving.
+## Overview
+This section demonstrates my ability to design, execute, and report performance tests using **Apache JMeter**.  
+The goal is to evaluate system behavior under load, identify bottlenecks, and communicate results clearly to stakeholders.
 
-🔧 Core Skills
+## Contents
 
-Functional & Regression Testing
+### 📄 Documentation
+- **Performance_Test_Plan.md**  
+  Describes scope, objectives, workload model, test scenarios, and success criteria.
 
-API Testing (Postman)
+- **Performance_Test_Summary_Report.md**  
+  High-level analysis of test execution, results, findings, and recommendations.
 
-Cypress Test Automation
+### 📊 Reports
+- **html-report3.zip**  
+  Apache JMeter HTML dashboard containing:
+  - Response times
+  - Throughput
+  - Error rates
+  - Percentiles
 
-Performance Testing (JMeter)
+> Download and extract the ZIP file, then open `index.html` in a browser to view the report.
 
-Test Case Design & Bug Reporting
+## Tools Used
+- Apache JMeter
+- GitHub
+- Markdown
 
-Agile / Scrum
-
-📁 What You’ll Find in This Portfolio
-
-Functional Web Testing Project
-
-API Testing Collection (Postman)
-
-Cypress Automation Framework
-
-JMeter Load Test & Analysis
-
-Full QA Documentation Set
-
-📬 Contact: 2348079534994
-
-LinkedIn: https://www.linkedin.com/in/oluwakemiesther/
-Email: Oluwakemi.dada37@gmail.com
+## Key Skills Demonstrated
+- Load & stress testing
+- Test planning and reporting
+- Metrics analysis
+- Professional documentation
